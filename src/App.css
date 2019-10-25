@@ -2,3 +2,54 @@
   background-color: rgba(13, 29, 56, 0.8);
   min-height: 100vh;
 }
+
+.moviesPage{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.moviesPage .w_movie{
+  flex-basis: 20%;
+  width: 20%;
+  margin-bottom: 60px;
+}
+
+.moviesPage .movie{
+  width: 138px;
+}
+
+.moviesPage .movie > img,
+.moviesPage .movie .noPoster{
+  border-radius: 5px;
+}
+
+.moviesPage .movie > img{
+  width: 100%;
+  height: auto;
+}
+
+.moviesPage .movie .noPoster{
+  display: flex;
+  width: 100%;
+  height: 207px;
+  justify-content: center;
+}
+
+.moviesPage .movie .noPoster img{
+  opacity: 0.5;
+}
+
+.moviesPage .movie p{
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.moviesPage .movie .title{
+  font-size: 14px;
+}
+
+.moviesPage .movie .released{
+  font-size: 12px;
+  color: #586E94;
+}
