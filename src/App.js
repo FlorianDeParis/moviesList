@@ -12,27 +12,30 @@ class HomePage extends Component {
       api_key: 'a1286a31a5d4743ff5baab39181dd827',
       page_list: 1,
       old_page_list: null,
-      res: null
-    }
+      res: null,
+      alpha_filter: true,
+      opened_alpha: false
+    };
   }
 
   componentDidMount(){
-    fetch(this.state.base_url+'discover/movie?sort_by=vote_average.desc&vote_count.gte=10&page=1&api_key='+this.state.api_key)
+    let order = this.state.alpha_filter?'asc':'desc';
+    fetch(this.state.base_url+'discover/movie?sort_by=original_title.'+order+'&api_key='+this.state.api_key+'&page=1')
     .then(response => response.json())
     .then((data) => {
       this.setState({res: data, old_page_list: 1});
-
     });
   }
 
   componentDidUpdate(){
-    if(this.state.page_list !== this.state.old_page_list){
-      fetch(this.state.base_url+'discover/movie?sort_by=vote_average.desc&vote_count.gte=10&api_key='+this.state.api_key+'&page='+this.state.page_list)
-      .then(response => response.json())
-      .then((data) => {
-        this.setState({res: data, old_page_list: this.state.page_list});
-      });
-    }
+    // let order = this.state.alpha_filter?'asc':'desc';
+    // if(this.state.page_list !== this.state.old_page_list){
+    //   fetch(this.state.base_url+'discover/movie?sort_by=original_title.'+order+'&api_key='+this.state.api_key+'&page='+this.state.page_list)
+    //   .then(response => response.json())
+    //   .then((data) => {
+    //     this.setState({res: data, old_page_list: this.state.page_list});
+    //   });
+    // }
   }
 
   renderMoviesList(){
@@ -55,6 +58,14 @@ class HomePage extends Component {
     )
   }
 
+  handleClickAlpha(e){
+    e.stopPropagation();
+    console.log(this.state.opened_alpha);
+    this.setState({opened_alpha: !this.state.opened_alpha})
+  }
+
+
+
   render() {
     return (
       <div className="MoviesList">
@@ -65,7 +76,17 @@ class HomePage extends Component {
         </nav>
         <div className="container">
           <h3>Tous les films</h3>
-          <div className="filters"></div>
+          <div className="filters">
+          <div>Trier par: 
+            <button className="alphaBlock" onClick={(e) => this.handleClickAlpha(e)} opened={this.state.opened_alpha.toString()}>
+              <span>Ordre Alphabétique</span>
+              <ul>
+                <li order="asc">Ordre Alphabétique</li>
+                <li order="desc">Ordre Inversé</li>
+              </ul>
+            </button>
+          </div>
+          </div>
           <ul className="moviesPage">
             {this.renderMoviesList()}
           </ul>
@@ -77,3 +98,4 @@ class HomePage extends Component {
 }
 
 export default HomePage;
+
