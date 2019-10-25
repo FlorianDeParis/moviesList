@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="25px" viewBox="0 0 15 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>sliderpreviousarrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-393.000000, -159.000000)" fill="#2586FA" fill-rule="nonzero">
+            <path d="M410.629018,178.56066 C411.171413,179.146447 412.050809,179.146447 412.593204,178.56066 C413.135599,177.974874 413.135599,177.025126 412.593204,176.43934 L401.482093,164.43934 C400.939698,163.853553 400.060302,163.853553 399.517907,164.43934 L388.406796,176.43934 C387.864401,177.025126 387.864401,177.974874 388.406796,178.56066 C388.949191,179.146447 389.828587,179.146447 390.370982,178.56066 L400.499885,167.621445 L410.629018,178.56066 Z" id="sliderpreviousarrow" transform="translate(400.500000, 171.500000) rotate(-90.000000) translate(-400.500000, -171.500000) "></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="6px" height="10px" viewBox="0 0 6 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>yearnewtarrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-362.000000, -275.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M369.051607,282.824264 C369.268565,283.058579 369.620324,283.058579 369.837282,282.824264 C370.054239,282.589949 370.054239,282.210051 369.837282,281.975736 L365.392837,277.175736 C365.175879,276.941421 364.824121,276.941421 364.607163,277.175736 L360.162718,281.975736 C359.945761,282.210051 359.945761,282.589949 360.162718,282.824264 C360.379676,283.058579 360.731435,283.058579 360.948393,282.824264 L364.999954,278.448578 L369.051607,282.824264 Z" id="yearnewtarrow" transform="translate(365.000000, 280.000000) rotate(-270.000000) translate(-365.000000, -280.000000) "></path>
+        </g>
+    </g>
+</svg>

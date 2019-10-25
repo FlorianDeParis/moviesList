@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>dropdownarrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-280.000000, -167.000000)" fill="#586E94" fill-rule="nonzero">
+            <path d="M289.051607,172.824264 C289.268565,173.058579 289.620324,173.058579 289.837282,172.824264 C290.054239,172.589949 290.054239,172.210051 289.837282,171.975736 L285.392837,167.175736 C285.175879,166.941421 284.824121,166.941421 284.607163,167.175736 L280.162718,171.975736 C279.945761,172.210051 279.945761,172.589949 280.162718,172.824264 C280.379676,173.058579 280.731435,173.058579 280.948393,172.824264 L284.999954,168.448578 L289.051607,172.824264 Z" id="dropdownarrow" transform="translate(285.000000, 170.000000) rotate(-180.000000) translate(-285.000000, -170.000000) "></path>
+        </g>
+    </g>
+</svg>

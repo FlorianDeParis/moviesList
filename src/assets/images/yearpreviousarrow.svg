@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="6px" height="10px" viewBox="0 0 6 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>yearpreviousarrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-322.000000, -275.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M329.051607,282.824264 C329.268565,283.058579 329.620324,283.058579 329.837282,282.824264 C330.054239,282.589949 330.054239,282.210051 329.837282,281.975736 L325.392837,277.175736 C325.175879,276.941421 324.824121,276.941421 324.607163,277.175736 L320.162718,281.975736 C319.945761,282.210051 319.945761,282.589949 320.162718,282.824264 C320.379676,283.058579 320.731435,283.058579 320.948393,282.824264 L324.999954,278.448578 L329.051607,282.824264 Z" id="yearpreviousarrow" transform="translate(325.000000, 280.000000) rotate(-90.000000) translate(-325.000000, -280.000000) "></path>
+        </g>
+    </g>
+</svg>

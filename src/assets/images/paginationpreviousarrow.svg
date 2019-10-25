@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="14px" viewBox="0 0 8 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>paginationpreviousarrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-331.000000, -93.000000)" fill="#586E94" fill-rule="nonzero">
+            <path d="M340.402143,103.432352 C340.69142,103.744772 341.160431,103.744772 341.449709,103.432352 C341.738986,103.119933 341.738986,102.613401 341.449709,102.300981 L335.523783,95.9009812 C335.234506,95.5885618 334.765494,95.5885618 334.476217,95.9009812 L328.550291,102.300981 C328.261014,102.613401 328.261014,103.119933 328.550291,103.432352 C328.839569,103.744772 329.30858,103.744772 329.597857,103.432352 L334.999938,97.598104 L340.402143,103.432352 Z" id="paginationpreviousarrow" transform="translate(335.000000, 99.666667) rotate(-90.000000) translate(-335.000000, -99.666667) "></path>
+        </g>
+    </g>
+</svg>
