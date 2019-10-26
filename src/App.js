@@ -40,38 +40,37 @@ class HomePage extends Component {
     });
   }
 
-  componentDidUpdate(prevState){
+  componentDidUpdate(prevProps, prevState){
     // console.log('UPDATE');
     console.log('----');
+    console.log('UPDATE');
     console.log(prevState);
     console.log(this.state);
     console.log('----');
-    // console.log(prevState.res);
-    // console.log(this.state.res);
-    //console.log(JSON.stringify(this.state))
-    // if(JSON.stringify(prevState) !== JSON.stringify(this.state)){
-    //   console.log('UPDATING DATAS');
+    console.log(JSON.stringify(this.state))
+    if(JSON.stringify(prevState) !== JSON.stringify(this.state)){
+      console.log('UPDATING DATAS');
 
-    //   // fetch(this.state.base_url+'discover/movie?sort_by=original_title.'+this.state.alpha_filter+'&api_key='+this.state.api_key+'&page='+this.state.page_list)
-    //   // .then(response => response.json())
-    //   // .then((data) => {
-    //   //   this.setState({res: data});
-    //   // });
+      fetch(this.state.base_url+'discover/movie?sort_by=original_title.'+this.state.alpha_filter+'&api_key='+this.state.api_key+'&page='+this.state.page_list)
+      .then(response => response.json())
+      .then((data) => {
+        this.setState({res: data});
+      });
 
-    // } else {
-    //   console.log('BOTH ARE THE SAME STATE')
-    // }
+    } else {
+      console.log('BOTH ARE THE SAME STATE')
+    }
   }
 
-  refreshMovieList(alpha){
-    console.log('refreshMovieList');
-    let url = this.state.base_url+'discover/movie?sort_by=original_title.'+alpha+'&api_key='+this.state.api_key+'&page='+this.state.page_list
-    fetch(url)
-    .then(response => response.json())
-    .then((data) => {
-      this.setState({res: data, alpha_filter: alpha, ...this.state});
-    });
-  }
+  // refreshMovieList(alpha){
+  //   console.log('refreshMovieList');
+  //   let url = this.state.base_url+'discover/movie?sort_by=original_title.'+alpha+'&api_key='+this.state.api_key+'&page='+this.state.page_list
+  //   fetch(url)
+  //   .then(response => response.json())
+  //   .then((data) => {
+  //     this.setState({res: data, alpha_filter: alpha, ...this.state});
+  //   });
+  // }
 
   renderMoviesList(){
     let movies = this.state.res;
