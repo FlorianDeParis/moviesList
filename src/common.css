@@ -1,5 +1,5 @@
 html{
-  background-color: #0d1d38;
+  background-color: #0d1d38e6;
   background-image: url(./assets/images/backgroundimg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -51,4 +51,9 @@ button, button:focus {
   width: 1200px;
   margin: 0 auto;
   padding: 30px 60px 55px 60px;
+}
+
+h3{
+  font-size: 26px;
+  font-weight: bold;
 }

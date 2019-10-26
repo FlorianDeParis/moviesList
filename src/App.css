@@ -1,5 +1,5 @@
 .MoviesList{
-  background-color: rgba(13, 29, 56, 0.8);
+  background-color: #0d1d38e6;
   min-height: 100vh;
 }
 
@@ -44,47 +44,6 @@
   margin-bottom: 60px;
 }
 
-.moviesPage .movie{
-  width: 138px;
-}
-
-.moviesPage .movie > img,
-.moviesPage .movie .noPoster{
-  border-radius: 5px;
-}
-
-.moviesPage .movie > img{
-  width: 100%;
-  height: auto;
-}
-
-.moviesPage .movie .noPoster{
-  display: flex;
-  width: 100%;
-  height: 207px;
-  justify-content: center;
-  background-color: rgb(117, 128, 158);
-}
-
-.moviesPage .movie .noPoster img{
-  opacity: 0.5;
-}
-
-.moviesPage .movie p{
-  margin-bottom: 5px;
-}
-
-.moviesPage .movie .title{
-  margin-top: 5px;
-  font-size: 14px;
-}
-
-.moviesPage .movie .released{
-  font-size: 12px;
-  color: #586E94;
-  margin-top: 0px;
-}
-
 .MoviesList .pagination{
   display: flex;
   align-items: flex-start;
@@ -112,6 +71,8 @@
   border: solid 1px #586E94;
   border-radius: 15px;
   color: #586E94;
+  font-size: 16px;
+  font-weight: bold;
   line-height: 40px;
   text-align: center;
 }

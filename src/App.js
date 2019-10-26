@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import Dropdown from 'react-dropdown'
-import logo from './assets/images/logo.svg';
-import noPoster from './assets/images/iconmonstr-television-20.svg';
+import BestMoviesList from './components/BestMoviesList'
 import ReactPaginate from 'react-paginate';
 
+import logo from './assets/images/logo.svg';
+import noPoster from './assets/images/iconmonstr-television-20.svg';
+
 import './App.css';
+import './assets/css/MovieCard.css'
 import 'react-dropdown/style.css'
 
 class HomePage extends Component {
@@ -39,31 +42,35 @@ class HomePage extends Component {
 
   componentDidUpdate(prevState){
     // console.log('UPDATE');
-    console.log(prevState.res);
-    console.log(this.state.res);
+    console.log('----');
+    console.log(prevState);
+    console.log(this.state);
+    console.log('----');
+    // console.log(prevState.res);
+    // console.log(this.state.res);
     //console.log(JSON.stringify(this.state))
-    if(JSON.stringify(prevState) !== JSON.stringify(this.state)){
-      console.log('UPDATING DATAS');
+    // if(JSON.stringify(prevState) !== JSON.stringify(this.state)){
+    //   console.log('UPDATING DATAS');
 
-      // fetch(this.state.base_url+'discover/movie?sort_by=original_title.'+this.state.alpha_filter+'&api_key='+this.state.api_key+'&page='+this.state.page_list)
-      // .then(response => response.json())
-      // .then((data) => {
-      //   this.setState({res: data});
-      // });
+    //   // fetch(this.state.base_url+'discover/movie?sort_by=original_title.'+this.state.alpha_filter+'&api_key='+this.state.api_key+'&page='+this.state.page_list)
+    //   // .then(response => response.json())
+    //   // .then((data) => {
+    //   //   this.setState({res: data});
+    //   // });
 
-    } else {
-      console.log('BOTH ARE THE SAME STATE')
-    }
+    // } else {
+    //   console.log('BOTH ARE THE SAME STATE')
+    // }
   }
 
   refreshMovieList(alpha){
-    // console.log('refreshMovieList');
-    // console.log(this.state.base_url+'discover/movie?sort_by=original_title.'+alpha+'&api_key='+this.state.api_key+'&page='+this.state.page_list)
-    // fetch(this.state.base_url+'discover/movie?sort_by=original_title.'+alpha+'&api_key='+this.state.api_key+'&page='+this.state.page_list)
-    // .then(response => response.json())
-    // .then((data) => {
-    //   this.setState({res: data, alpha_filter: alpha});
-    // });
+    console.log('refreshMovieList');
+    let url = this.state.base_url+'discover/movie?sort_by=original_title.'+alpha+'&api_key='+this.state.api_key+'&page='+this.state.page_list
+    fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+      this.setState({res: data, alpha_filter: alpha, ...this.state});
+    });
   }
 
   renderMoviesList(){
@@ -72,7 +79,7 @@ class HomePage extends Component {
     return (
       movies && movies.results.map((movie, index) =>
         <li key={index} className="w_movie">
-          <div className="movie">
+          <div className="movieCard">
             {
               movie.poster_path ? 
               <img src={this.state.img_url + movie.poster_path} alt={'Poster'+ movie.title} />
@@ -87,7 +94,7 @@ class HomePage extends Component {
   }
 
   onChangeAlpha(entry){
-    console.log(entry.value);
+    //console.log(entry.value);
     this.setState({alpha_filter: entry.value})
     //this.refreshMovieList(entry.value)
   }
@@ -97,13 +104,9 @@ class HomePage extends Component {
       let totalPages = this.state.res.total_pages;
       let currentPage = this.state.res.page;
       let maxdisplayedPages = 10;
-      console.log('totalPages : '+totalPages);
-      console.log('currentPage : '+currentPage);
-      console.log('maxdisplayedPages : '+maxdisplayedPages);
-
       return (
         <ReactPaginate 
-          initialPage={currentPage} 
+          initialPage={currentPage - 1} 
           pageCount={totalPages} 
           pageRangeDisplayed={maxdisplayedPages} 
           marginPagesDisplayed='0'
@@ -132,6 +135,7 @@ class HomePage extends Component {
           </div>
         </nav>
         <div className="container">
+          <BestMoviesList />
           <h3>Tous les films</h3>
           <div className="filters">
             <span>Trier par:</span>

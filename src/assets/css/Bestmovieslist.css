@@ -1,0 +1,25 @@
+#BestMovies .slick-slider,
+#BestMovies .slick-list{
+  width: calc(100% - 60px);
+  margin: 0 auto;
+}
+
+#BestMovies .slick-arrow{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #43498965;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#BestMovies .slick-arrow:before{
+  display: none;
+}
+
+#BestMovies .slick-arrow.slick-prev{
+  background-image: url(../images/sliderpreviousarrow.svg);
+}
+#BestMovies .slick-arrow.slick-next{
+  background-image: url(../images/slidernextarrow.svg);
+}
