@@ -5,52 +5,32 @@
 
 .MoviesList .filters{
   margin: 40px 0;
+  display: flex;
+  align-items: center;
 }
 
-.MoviesList .alphaBlock{
-  position: relative;
-  padding: 10px;
+.MoviesList .filters > span {
+  color: #586E94;
+}
+
+.MoviesList .alphaBlock.Dropdown-root{
+  display: inline-block;
   margin-left:5px;
   width: 193px;
   font-size: 12px;
-  border-radius: 5px;
-  border: solid 1px #586E94;
   box-sizing: border-box;
   cursor: pointer;
 }
 
-.MoviesList .alphaBlock span{
+.MoviesList .alphaBlock.Dropdown-root .Dropdown-control{
+  background-color: transparent;
+  border: solid 1px #586E94;
+  border-radius: 5px;
+}
+
+.MoviesList .alphaBlock.Dropdown-root .Dropdown-control > *{
   color: #586E94;
 }
-
-.MoviesList .alphaBlock[opened='true'] ul{
-  display: block;
-}
-.MoviesList .alphaBlock ul{
-  display: none;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  transform: translateY(100%);
-  background: rgba(117, 128, 158, 0.7);
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.MoviesList .alphaBlock ul li{
-  box-sizing: border-box;
-  padding: 10px;
-  width: 100%;
-}
-
-
-
-
-
-
-
-
 
 .moviesPage{
   display: flex;
@@ -103,4 +83,47 @@
   font-size: 12px;
   color: #586E94;
   margin-top: 0px;
+}
+
+.MoviesList .pagination{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.MoviesList .pagination .pagination-btn{
+  margin: 0 7.5px;
+  cursor: pointer;
+}
+
+.MoviesList .pagination .break{
+  display: none;
+}
+
+.MoviesList .pagination .pagination-btn.selected a,
+.MoviesList .pagination .pagination-btn:hover a{
+  background-color:#586E94;
+  color: #0d1d38;
+}
+.MoviesList .pagination .pagination-btn a{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: solid 1px #586E94;
+  border-radius: 15px;
+  color: #586E94;
+  line-height: 40px;
+  text-align: center;
+}
+
+.MoviesList .pagination .pagination-btn.nextPage a{
+  background-image: url(./assets/images/paginationnextarrow.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.MoviesList .pagination .pagination-btn.prevPage a{
+  background-image: url(./assets/images/paginationpreviousarrow.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
