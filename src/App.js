@@ -18,12 +18,12 @@ class HomePage extends Component {
       img_url: 'https://image.tmdb.org/t/p/w300_and_h450_bestv2',
       api_key: 'a1286a31a5d4743ff5baab39181dd827',
       page_list: 1,
-      old_page_list: null,
       res: null,
       alpha_filter: 'asc',
-      opened_alpha: false,
       date_filter: null,
-      genre_filter: null
+      genre_filter: null,
+      search_mode: false,
+      query_word: null
     };
     this.optionsAlpha = [
       { value: 'asc', label: 'Ordre Alphabétique' },
@@ -33,7 +33,7 @@ class HomePage extends Component {
   }
 
   componentDidMount(){
-    fetch(this.state.base_url+'discover/movie?sort_by=original_title.'+this.state.alpha_filter+'&api_key='+this.state.api_key+'&page=1')
+    fetch(this.state.base_url+'discover/movie?sort_by=original_title.'+this.state.alpha_filter+'&include_adult=false&api_key='+this.state.api_key+'&page=1')
     .then(response => response.json())
     .then((data) => {
       this.setState({res: data});
@@ -41,17 +41,19 @@ class HomePage extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    // console.log('UPDATE');
     console.log('----');
     console.log('UPDATE');
     console.log(prevState);
     console.log(this.state);
     console.log('----');
-    console.log(JSON.stringify(this.state))
+
     if(JSON.stringify(prevState) !== JSON.stringify(this.state)){
+      let url_mode = this.state.search_mode ? 'search' : 'discover';
+      let query = this.state.search_mode ? '&query='+this.state.query_word : '';
+      console.log('URL MODE :'+url_mode);
       console.log('UPDATING DATAS');
 
-      fetch(this.state.base_url+'discover/movie?sort_by=original_title.'+this.state.alpha_filter+'&api_key='+this.state.api_key+'&page='+this.state.page_list)
+      fetch(this.state.base_url+url_mode+'/movie?sort_by=original_title.'+this.state.alpha_filter+'&include_adult=false&api_key='+this.state.api_key+'&page='+this.state.page_list+query)
       .then(response => response.json())
       .then((data) => {
         this.setState({res: data});
@@ -62,19 +64,8 @@ class HomePage extends Component {
     }
   }
 
-  // refreshMovieList(alpha){
-  //   console.log('refreshMovieList');
-  //   let url = this.state.base_url+'discover/movie?sort_by=original_title.'+alpha+'&api_key='+this.state.api_key+'&page='+this.state.page_list
-  //   fetch(url)
-  //   .then(response => response.json())
-  //   .then((data) => {
-  //     this.setState({res: data, alpha_filter: alpha, ...this.state});
-  //   });
-  // }
-
   renderMoviesList(){
     let movies = this.state.res;
-    // console.log(movies);
     return (
       movies && movies.results.map((movie, index) =>
         <li key={index} className="w_movie">
@@ -93,21 +84,29 @@ class HomePage extends Component {
   }
 
   onChangeAlpha(entry){
-    //console.log(entry.value);
-    this.setState({alpha_filter: entry.value})
-    //this.refreshMovieList(entry.value)
+    this.setState({alpha_filter: entry.value, page_list: 1})
+  }
+
+  onChangeSearch(event){
+    if(event.target.value.trim().length > 0){
+      console.log(event.target.value);
+      this.setState({search_mode: true, query_word: event.target.value.trim()})
+    } else {
+      this.setState({search_mode: false, query_word: null})
+      console.log('EMPTY STRING');
+    }
   }
 
   renderPagination(){
     if(this.state.res){
       let totalPages = this.state.res.total_pages;
       let currentPage = this.state.res.page;
-      let maxdisplayedPages = 10;
+      let maxdisplayedPages = 11;
       return (
         <ReactPaginate 
           initialPage={currentPage - 1} 
           pageCount={totalPages} 
-          pageRangeDisplayed={maxdisplayedPages} 
+          pageRangeDisplayed={maxdisplayedPages - 1} 
           marginPagesDisplayed='0'
           previousLabel=' '
           nextLabel=' '
@@ -122,7 +121,7 @@ class HomePage extends Component {
   }
 
   changePage(e){
-    console.log(e)
+    this.setState({page_list: e.selected + 1})
   }
 
   render() {
@@ -131,10 +130,12 @@ class HomePage extends Component {
         <nav>
           <div className="container">
             <img src={logo} alt="MovieFinder logo"></img>
+            <input type="text" placeholder="Rechercher un film" onChange={(e) => this.onChangeSearch(e)}></input>
           </div>
         </nav>
         <div className="container">
           <BestMoviesList />
+          <span className="separator"></span>
           <h3>Tous les films</h3>
           <div className="filters">
             <span>Trier par:</span>

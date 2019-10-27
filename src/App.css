@@ -1,6 +1,31 @@
 .MoviesList{
-  background-color: #0d1d38e6;
+  background-color: #010b1ce6;
   min-height: 100vh;
+}
+
+.MoviesList nav > div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MoviesList nav input[type='text']{
+  position: relative;
+  height: 40px;
+  width: 315px;
+  padding: 15px;
+  padding-right: 45px;
+  font-size: 12px;
+  box-sizing: border-box;
+  background-color: #43498965;
+  background-image: url(./assets/images/searchicon.svg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 15px) center;
+  color: #586E94;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  outline: none;
 }
 
 .MoviesList .filters{
@@ -23,13 +48,36 @@
 }
 
 .MoviesList .alphaBlock.Dropdown-root .Dropdown-control{
+  cursor: pointer;
   background-color: transparent;
   border: solid 1px #586E94;
   border-radius: 5px;
 }
+.MoviesList .alphaBlock.Dropdown-root.is-open .Dropdown-control{
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
 .MoviesList .alphaBlock.Dropdown-root .Dropdown-control > *{
   color: #586E94;
+}
+
+.MoviesList .alphaBlock.Dropdown-root .Dropdown-menu{
+  border: none;
+  background: none;
+}
+
+.MoviesList .alphaBlock.Dropdown-root .Dropdown-menu .Dropdown-option,
+.MoviesList .alphaBlock.Dropdown-root .Dropdown-menu .Dropdown-option:hover{
+  color: #586E94;
+  background-color: #24314a;
+  border: solid 1px #586E94;
+}
+
+.MoviesList .alphaBlock.Dropdown-root .Dropdown-menu .Dropdown-option:last-child{
+  border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .moviesPage{

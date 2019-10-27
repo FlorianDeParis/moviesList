@@ -25,7 +25,7 @@ class BestMoviesList extends Component {
   }
 
   componentDidMount(){
-    fetch(this.state.base_url+'discover/movie?sort_by=popularity.desc&api_key='+this.state.api_key+'&page=1')
+    fetch(this.state.base_url+'discover/movie?sort_by=popularity.desc&include_adult=false&api_key='+this.state.api_key+'&page=1')
     .then(response => response.json())
     .then((data) => {
       this.setState({res: data});
@@ -34,9 +34,7 @@ class BestMoviesList extends Component {
 
   renderList(){
     if(this.state.res){
-      console.log(this.state.res.results.length);
       let movies = this.state.res.results.length > 10 ? this.state.res.results.slice(0, 10) : this.state.res.results;
-      console.log(movies)
       return (
         movies && movies.map((movie, index) =>
           <div key={index} className="w_movie slide">
