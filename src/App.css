@@ -38,7 +38,12 @@
   color: #586E94;
 }
 
-.MoviesList .alphaBlock.Dropdown-root{
+.MoviesList .filters > span:nth-of-type(2){
+  margin-left: 50px;
+}
+
+.MoviesList .alphaBlock.Dropdown-root,
+.MoviesList .genresBlock.Dropdown-root{
   display: inline-block;
   margin-left:5px;
   width: 193px;
@@ -47,34 +52,45 @@
   cursor: pointer;
 }
 
-.MoviesList .alphaBlock.Dropdown-root .Dropdown-control{
+.MoviesList .genresBlock.Dropdown-root{
+  width: 120px;
+}
+
+.MoviesList .alphaBlock.Dropdown-root .Dropdown-control,
+.MoviesList .genresBlock.Dropdown-root .Dropdown-control{
   cursor: pointer;
   background-color: transparent;
   border: solid 1px #586E94;
   border-radius: 5px;
 }
-.MoviesList .alphaBlock.Dropdown-root.is-open .Dropdown-control{
+.MoviesList .alphaBlock.Dropdown-root.is-open .Dropdown-control,
+.MoviesList .genresBlock.Dropdown-root.is-open .Dropdown-control{
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.MoviesList .alphaBlock.Dropdown-root .Dropdown-control > *{
+.MoviesList .alphaBlock.Dropdown-root .Dropdown-control > *,
+.MoviesList .genresBlock.Dropdown-root .Dropdown-control > *{
   color: #586E94;
 }
 
-.MoviesList .alphaBlock.Dropdown-root .Dropdown-menu{
+.MoviesList .alphaBlock.Dropdown-root .Dropdown-menu,
+.MoviesList .genresBlock.Dropdown-root .Dropdown-menu{
   border: none;
   background: none;
 }
 
 .MoviesList .alphaBlock.Dropdown-root .Dropdown-menu .Dropdown-option,
-.MoviesList .alphaBlock.Dropdown-root .Dropdown-menu .Dropdown-option:hover{
+.MoviesList .alphaBlock.Dropdown-root .Dropdown-menu .Dropdown-option:hover,
+.MoviesList .genresBlock.Dropdown-root .Dropdown-menu .Dropdown-option,
+.MoviesList .genresBlock.Dropdown-root .Dropdown-menu .Dropdown-option:hover{
   color: #586E94;
   background-color: #24314a;
   border: solid 1px #586E94;
 }
 
-.MoviesList .alphaBlock.Dropdown-root .Dropdown-menu .Dropdown-option:last-child{
+.MoviesList .alphaBlock.Dropdown-root .Dropdown-menu .Dropdown-option:last-child,
+.MoviesList .genresBlock.Dropdown-root .Dropdown-menu .Dropdown-option:last-child{
   border-top: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -123,6 +139,7 @@
   font-weight: bold;
   line-height: 40px;
   text-align: center;
+  outline: none;
 }
 
 .MoviesList .pagination .pagination-btn.nextPage a{
