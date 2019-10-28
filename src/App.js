@@ -145,16 +145,22 @@ class HomePage extends Component {
           <span className="separator"></span>
           <h3>Tous les films</h3>
           <div className="filters">
-            <span>Trier par:</span>
-            <Dropdown options={this.optionsAlpha} onChange={(entry) => this.onChangeAlpha(entry)} value={this.state.alpha_filter} placeholder="Choisir l'ordre d'apparition" className="alphaBlock"/>
-            <span>Filtrer par:</span>
-            <Dropdown options={this.optionsGenres} onChange={(entry) => this.onChangeGenres(entry)} value={this.state.genre_filter} placeholder="Genre" className="genresBlock"/>
-            <YearPicker onChange={(entry) => this.onChangeDate(entry)} />
+            <div className="w_alpha">
+              <span>Trier par:</span>
+              <Dropdown options={this.optionsAlpha} onChange={(entry) => this.onChangeAlpha(entry)} value={this.state.alpha_filter} placeholder="Choisir l'ordre d'apparition" className="alphaBlock"/>
+            </div>
+            <div className="w_genres_year">
+              <span>Filtrer par:</span>
+              <Dropdown options={this.optionsGenres} onChange={(entry) => this.onChangeGenres(entry)} value={this.state.genre_filter} placeholder="Genre" className="genresBlock"/>
+              <YearPicker onChange={(entry) => this.onChangeDate(entry)} />
+            </div>
           </div>
           <ul className="moviesPage">
             {this.renderMoviesList()}
           </ul>
-          {this.renderPagination()}
+          <div className="container w_pagination">
+            {this.renderPagination()}
+          </div>
         </div>
       </div>
     );

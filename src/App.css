@@ -1,12 +1,14 @@
 .MoviesList{
   background-color: #010b1ce6;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .MoviesList nav > div{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .MoviesList nav input[type='text']{
@@ -32,13 +34,20 @@
   margin: 40px 0;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-.MoviesList .filters > span {
+.MoviesList .filters > div{
+  display: flex;
+  align-items: center;
+}
+
+.MoviesList .filters > div > span {
   color: #586E94;
+  font-size: 12px;
 }
 
-.MoviesList .filters > span:nth-of-type(2){
+.MoviesList .filters > div:nth-child(2) > span{
   margin-left: 50px;
 }
 
@@ -152,6 +161,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .MoviesList .pagination .pagination-btn{
@@ -192,4 +202,63 @@
   background-image: url(./assets/images/paginationpreviousarrow.svg);
   background-repeat: no-repeat;
   background-position: center;
+}
+
+@media screen and (max-width: 1200px){
+  .moviesPage .w_movie{
+    flex-basis: 25%;
+    width: 25%;
+  }
+
+  .w_pagination{
+    padding: 0;
+    width: 450px;
+  }
+
+  .MoviesList .pagination .pagination-btn{
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .MoviesList nav input[type='text']{
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .MoviesList .filters{
+    margin-top: 25px;
+  }
+
+  .MoviesList .filters > div{
+    width: 100%;
+    flex-basis: 100%;
+    margin-bottom: 10px;
+  }
+
+  .MoviesList .filters > div > span{
+    margin: 0!important;
+  }
+
+  .moviesPage{
+    justify-content: center;
+  }
+
+  .moviesPage .w_movie{
+    flex-basis: calc(100% / 3);
+    width: calc(100% / 3);
+  }
+}
+
+@media screen and (max-width: 568px){
+  .MoviesList nav > div{
+    padding-bottom: 0;
+  }
+
+  .moviesPage .w_movie{
+    box-sizing: border-box;
+    padding: 0 5px;
+    flex-basis: 50%;
+    width: 50%;
+  }
 }

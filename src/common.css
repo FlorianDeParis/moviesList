@@ -47,10 +47,10 @@ button, button:focus {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1024px;
   width: 1200px;
   margin: 0 auto;
-  padding: 30px 60px 55px 60px;
+  padding: 30px 0 55px 0;
 }
 
 .separator{
@@ -64,4 +64,37 @@ button, button:focus {
 h3{
   font-size: 26px;
   font-weight: bold;
+}
+
+@media screen and (max-width: 1200px){
+  .container{
+    width: 768px;
+    max-width: 768px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .container{
+    width: 568px;
+    max-width: 568px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+  }
+
+  h3{
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 568px){
+  .container{
+    width: 100%;
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
