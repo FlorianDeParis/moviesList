@@ -96,6 +96,46 @@
   border-bottom-right-radius: 5px;
 }
 
+.MoviesList .year-picker{
+  margin-left: 10px;
+  width: 120px;
+  border-radius: 5px;
+  border: solid 1px #586E94;
+  height: 30px;
+  background: transparent;
+}
+
+.MoviesList .year-picker .year-input{
+  cursor: pointer;
+  font-size: 12px;
+  background: transparent;
+  color: #586E94;
+}
+
+.MoviesList .year-picker .picker-panel{
+  background-color: #253755;
+  border: solid 1px#586E94;
+  border-radius: 5px;
+}
+
+.MoviesList .year-picker .picker-panel *{
+  cursor: pointer;
+  color: #586E94; 
+}
+
+.MoviesList .year-picker .picker-panel .selected-year{
+  background: none;
+  border: solid 1px#586E94;
+}
+
+.MoviesList .year-picker .picker-panel .body{
+  border-top: solid 1px#586E94;
+}
+
+.MoviesList .year-picker .picker-panel .footer{
+  border-top: solid 1px#586E94;
+}
+
 .moviesPage{
   display: flex;
   flex-wrap: wrap;

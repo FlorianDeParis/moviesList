@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Dropdown from 'react-dropdown'
 import BestMoviesList from './components/BestMoviesList'
 import ReactPaginate from 'react-paginate';
+import YearPicker from "react-year-picker";
 
 import logo from './assets/images/logo.svg';
 import noPoster from './assets/images/iconmonstr-television-20.svg';
@@ -20,7 +21,7 @@ class HomePage extends Component {
       page_list: 1,
       res: null,
       alpha_filter: 'asc',
-      date_filter: null,
+      date_filter: '',
       genre_filter: 'all',
       search_mode: false,
       query_word: null
@@ -48,27 +49,17 @@ class HomePage extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    console.log('----');
-    console.log('UPDATE');
-    console.log(prevState);
-    console.log(this.state);
-    console.log('----');
-
     if(JSON.stringify(prevState) !== JSON.stringify(this.state)){
       let url_mode = this.state.search_mode ? 'search' : 'discover';
       let query = this.state.search_mode ? '&query='+this.state.query_word : '';
       let genre = this.state.genre_filter !== 'all' ? '&with_genres='+this.state.genre_filter : '';
-      console.log('URL MODE :'+url_mode);
-      console.log('UPDATING DATAS');
+      let date = this.state.date_filter && this.state.date_filter !== '' ? '&year='+this.state.date_filter : '';
 
-      fetch(this.state.base_url+url_mode+'/movie?sort_by=original_title.'+this.state.alpha_filter+'&include_adult=false&api_key='+this.state.api_key+'&page='+this.state.page_list+query+genre)
+      fetch(this.state.base_url+url_mode+'/movie?sort_by=original_title.'+this.state.alpha_filter+'&include_adult=false&api_key='+this.state.api_key+'&page='+this.state.page_list+query+genre+date)
       .then(response => response.json())
       .then((data) => {
         this.setState({res: data});
       });
-
-    } else {
-      console.log('BOTH ARE THE SAME STATE')
     }
   }
 
@@ -98,17 +89,18 @@ class HomePage extends Component {
   }
 
   onChangeGenres(entry){
-    console.log(entry.value);
     this.setState({genre_filter: entry.value, page_list: 1, search_mode: false})
+  }
+
+  onChangeDate(e){
+    this.setState({date_filter: e, page_list: 1, search_mode: false})
   }
 
   onChangeSearch(event){
     if(event.target.value.trim().length > 0){
-      console.log(event.target.value);
       this.setState({search_mode: true, query_word: event.target.value.trim()})
     } else {
       this.setState({search_mode: false, query_word: null})
-      console.log('EMPTY STRING');
     }
   }
 
@@ -117,7 +109,6 @@ class HomePage extends Component {
       let totalPages = this.state.res.total_pages;
       let currentPage = this.state.res.page;
       let maxdisplayedPages = 11;
-      console.log(totalPages,currentPage)
       return (
         <ReactPaginate 
           initialPage={currentPage - 1} 
@@ -158,6 +149,7 @@ class HomePage extends Component {
             <Dropdown options={this.optionsAlpha} onChange={(entry) => this.onChangeAlpha(entry)} value={this.state.alpha_filter} placeholder="Choisir l'ordre d'apparition" className="alphaBlock"/>
             <span>Filtrer par:</span>
             <Dropdown options={this.optionsGenres} onChange={(entry) => this.onChangeGenres(entry)} value={this.state.genre_filter} placeholder="Genre" className="genresBlock"/>
+            <YearPicker onChange={(entry) => this.onChangeDate(entry)} />
           </div>
           <ul className="moviesPage">
             {this.renderMoviesList()}
