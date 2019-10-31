@@ -3,12 +3,11 @@ import Dropdown from 'react-dropdown'
 import BestMoviesList from './components/BestMoviesList'
 import ReactPaginate from 'react-paginate';
 import YearPicker from "react-year-picker";
+import MovieCard from './components/MovieCard';
 
 import logo from './assets/images/logo.svg';
-import noPoster from './assets/images/iconmonstr-television-20.svg';
 
 import './App.css';
-import './assets/css/MovieCard.css'
 import 'react-dropdown/style.css'
 
 class HomePage extends Component {
@@ -68,17 +67,7 @@ class HomePage extends Component {
     if(movies){
       return (
         movies && movies.results.map((movie, index) =>
-          <li key={index} className="w_movie">
-            <div className="movieCard">
-              {
-                movie.poster_path ? 
-                <img src={this.state.img_url + movie.poster_path} alt={'Poster'+ movie.title} />
-                :<div className="noPoster"><img src={noPoster} alt={'Poster'+ movie.title} /></div>
-              }
-              <p className='title'>{movie.title}</p>
-              <p className='released'>{movie.release_date ? movie.release_date.split('-')[0] : 'Année inconnue'}</p>
-            </div>
-          </li>
+          <MovieCard key={index} movie={movie} displayType='list'/>
         )
       )
     }

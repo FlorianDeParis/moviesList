@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
-
-import noPoster from '../assets/images/iconmonstr-television-20.svg';
+import MovieCard from './MovieCard';
 
 import '../assets/css/Bestmovieslist.css';
-import '../assets/css/MovieCard.css'
 
 class BestMoviesList extends Component {
   constructor(props){
@@ -37,17 +35,7 @@ class BestMoviesList extends Component {
       let movies = this.state.res.results.length > 10 ? this.state.res.results.slice(0, 10) : this.state.res.results;
       return (
         movies && movies.map((movie, index) =>
-          <div key={index} className="w_movie slide">
-            <div className="movieCard">
-              {
-                movie.poster_path ? 
-                <img src={this.state.img_url + movie.poster_path} alt={'Poster'+ movie.title} />
-                :<div className="noPoster"><img src={noPoster} alt={'Poster'+ movie.title} /></div>
-              }
-              <p className='title'>{movie.title}</p>
-              <p className='released'>{movie.release_date ? movie.release_date.split('-')[0] : 'Année inconnue'}</p>
-            </div>
-          </div>
+          <MovieCard key={index} movie={movie} displayType='slide'/>
         )
       )
     }
