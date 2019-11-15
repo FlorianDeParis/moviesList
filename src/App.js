@@ -4,6 +4,7 @@ import BestMoviesList from './components/BestMoviesList'
 import ReactPaginate from 'react-paginate';
 import YearPicker from "react-year-picker";
 import MovieCard from './components/MovieCard';
+import { PulseLoader } from 'react-spinners';
 
 import logo from './assets/images/logo.svg';
 
@@ -23,7 +24,8 @@ class HomePage extends Component {
       date_filter: '',
       genre_filter: 'all',
       search_mode: false,
-      query_word: null
+      query_word: null,
+      isLoaded: false,
     };
     this.optionsAlpha = [
       { value: 'asc', label: 'Ordre Alphabétique' },
@@ -43,30 +45,39 @@ class HomePage extends Component {
     fetch(this.state.base_url+'discover/movie?sort_by=original_title.'+this.state.alpha_filter+'&include_adult=false&api_key='+this.state.api_key+'&page=1')
     .then(response => response.json())
     .then((data) => {
-      this.setState({res: data});
+      this.setState({res: data, isLoaded: true});
     });
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if(JSON.stringify(prevState) !== JSON.stringify(this.state)){
-      let url_mode = this.state.search_mode ? 'search' : 'discover';
-      let query = this.state.search_mode ? '&query='+this.state.query_word : '';
-      let genre = this.state.genre_filter !== 'all' ? '&with_genres='+this.state.genre_filter : '';
-      let date = this.state.date_filter && this.state.date_filter !== '' ? '&year='+this.state.date_filter : '';
+  // componentDidUpdate(prevProps, prevState){
+  //   if(JSON.stringify(prevState) !== JSON.stringify(this.state)){
+  //     let url_mode = this.state.search_mode ? 'search' : 'discover';
+  //     let query = this.state.search_mode ? '&query='+this.state.query_word : '';
+  //     let genre = this.state.genre_filter !== 'all' ? '&with_genres='+this.state.genre_filter : '';
+  //     let date = this.state.date_filter && this.state.date_filter !== '' ? '&year='+this.state.date_filter : '';
 
-      fetch(this.state.base_url+url_mode+'/movie?sort_by=original_title.'+this.state.alpha_filter+'&include_adult=false&api_key='+this.state.api_key+'&page='+this.state.page_list+query+genre+date)
+  //     fetch(this.state.base_url+url_mode+'/movie?sort_by=original_title.'+this.state.alpha_filter+'&include_adult=false&api_key='+this.state.api_key+'&page='+this.state.page_list+query+genre+date)
+  //     .then(response => response.json())
+  //     .then((data) => {
+  //       this.setState({res: data, isLoaded: true});
+  //     });
+
+  //   }
+  // }
+
+  fetchMovies({base_url,url_mode,alpha_filter,api_key,page_list,query='',genre='',date=''}){
+    fetch(base_url+url_mode+'/movie?sort_by=original_title.'+alpha_filter+'&include_adult=false&api_key='+api_key+'&page='+page_list+query+genre+date)
       .then(response => response.json())
       .then((data) => {
-        this.setState({res: data});
+        this.setState({res: data, isLoaded: true});
       });
-    }
   }
 
   renderMoviesList(){
     let movies = this.state.res;
-    if(movies){
+    if(movies && movies.results){
       return (
-        movies && movies.results.map((movie, index) =>
+        movies.results.map((movie, index) =>
           <MovieCard key={index} movie={movie} displayType='list'/>
         )
       )
@@ -74,22 +85,29 @@ class HomePage extends Component {
   }
 
   onChangeAlpha(entry){
-    this.setState({alpha_filter: entry.value, page_list: 1, search_mode: false})
+    // this.setState({alpha_filter: entry.value, page_list: 1, search_mode: false, isLoaded: false})
+    this.fetchMovies({
+      base_url:this.state.base_url,
+      url_mode:'discover',
+      alpha_filter:entry.value,
+      api_key:this.state.api_key,
+      page_list:1
+    })
   }
 
   onChangeGenres(entry){
-    this.setState({genre_filter: entry.value, page_list: 1, search_mode: false})
+    this.setState({genre_filter: entry.value, page_list: 1, search_mode: false, isLoaded: false})
   }
 
   onChangeDate(e){
-    this.setState({date_filter: e, page_list: 1, search_mode: false})
+    this.setState({date_filter: e, page_list: 1, search_mode: false, isLoaded: false})
   }
 
   onChangeSearch(event){
     if(event.target.value.trim().length > 0){
-      this.setState({search_mode: true, query_word: event.target.value.trim()})
+      this.setState({search_mode: true, query_word: event.target.value.trim(), isLoaded: false})
     } else {
-      this.setState({search_mode: false, query_word: null})
+      this.setState({search_mode: false, query_word: null, isLoaded: false})
     }
   }
 
@@ -103,7 +121,7 @@ class HomePage extends Component {
           initialPage={currentPage - 1} 
           pageCount={totalPages} 
           pageRangeDisplayed={maxdisplayedPages - 1} 
-          marginPagesDisplayed='0'
+          marginPagesDisplayed={0}
           previousLabel=' '
           nextLabel=' '
           containerClassName='pagination'
@@ -117,7 +135,7 @@ class HomePage extends Component {
   }
 
   changePage(e){
-    this.setState({page_list: e.selected + 1})
+    this.setState({page_list: e.selected + 1, isLoaded: false})
   }
 
   render() {
@@ -148,7 +166,15 @@ class HomePage extends Component {
             {this.renderMoviesList()}
           </ul>
           <div className="container w_pagination">
-            {this.renderPagination()}
+            {this.state.img_url ? (
+              this.renderPagination()
+            ) : (
+              <PulseLoader
+              sizeUnit={"px"}
+              size={15}
+              color={'#586E94'}
+            />
+            )}
           </div>
         </div>
       </div>
