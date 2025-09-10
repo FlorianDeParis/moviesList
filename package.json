@@ -7,7 +7,7 @@
     "react-dom": "^16.11.0",
     "react-dropdown": "^1.6.4",
     "react-paginate": "^6.3.0",
-    "react-scripts": "3.2.0",
+    "react-scripts": "5.0.1",
     "react-slick": "^0.25.2",
     "react-spinners": "^0.6.1",
     "react-year-picker": "^0.3.7"
